@@ -1,4 +1,5 @@
 let options = ["rock", "paper", "scissors"];
+
 const computerPlay = () => {
   return options[Math.floor(Math.random() * options.length)];
 };
@@ -42,4 +43,9 @@ const computerSelection = computerPlay();
 console.log(playRound(playerSelection, computerSelection)); //used console to
 // test, we will use return later as per the instructions
 
-// Next we have to create a game() function....
+// Next we have to create a game() function.... and add a loop
+const game = () => {
+  for (let i = 0; i < 5; i++) {
+    //
+  }
+};
