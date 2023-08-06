@@ -27,7 +27,7 @@ const playRound = (playerSelection, computerSelection) => {
             : "You Lose!"; // we need more logic here for when computer wins
         return result;
       } else {
-        return "Incorrect entry!";
+        return "Incorrect entry!, Please try again...";
       }
     } else {
       return "See you soon!";
