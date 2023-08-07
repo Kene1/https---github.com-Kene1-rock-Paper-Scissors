@@ -20,11 +20,11 @@ const playRound = (playerSelection, computerSelection) => {
           playerSelection === computerSelection
             ? `You played: ${playerSelection}, computer played: ${computerSelection}. It's a draw!`
             : playerSelection === "paper" && computerSelection === "rock"
-            ? "You win! Paper beats Rock."
+            ? `You played: ${playerSelection}, computer played: ${computerSelection}. You win! Paper beats Rock.`
             : playerSelection === "scissors" && computerSelection === "paper"
-            ? "You win! Scissors beats Paper."
+            ? `You played: ${playerSelection}, computer played: ${computerSelection}. You win! Scissors beats Paper.`
             : playerSelection === "rock" && computerSelection === "scissors"
-            ? "You win! Rock beats Scissors!"
+            ? `You played: ${playerSelection}, computer played: ${computerSelection}. You win! Rock beats Scissors!`
             : "You Lose!"; // we need more logic here for when computer wins
         return result;
       } else {
