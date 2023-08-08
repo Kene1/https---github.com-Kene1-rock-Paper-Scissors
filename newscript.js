@@ -1,12 +1,13 @@
 let options = ["rock", "paper", "scissors"];
-
+let playerSelectionScore = 0;
+let computerSelectionScore = 0;
 function computerPlay() {
     return options[Math.floor(Math.random() * options.length)];
 }
 
 function playRound(playerSelection, computerSelection) {
     let gameBegin = confirm("Let's play Rock, Paper or Scissors")
-
+    
     if (gameBegin) {
         playerSelection = prompt("Please enter rock, paper or scissors!");
 
@@ -20,11 +21,13 @@ function playRound(playerSelection, computerSelection) {
               ) {
                 
                 if (playerSelection === computerSelection) {
-                    return ("It's a draw! Both played " + playerSelection);
+                    alert("It's a draw! Both played " + playerSelection);
                 }else if (playerSelection === "paper" && computerSelection === "rock" || playerSelection === "scissors" && computerSelection === "paper" || playerSelection === "rock" && computerSelection === "scissors") {
-                    return ("You win! " + playerSelection + " beats " + computerSelection );
+                    playerSelectionScore++;
+                    alert("You win! " + playerSelection + " beats " + computerSelection );
                 }else {
-                    return ("Computer wins! " + computerSelection + " beats " + playerSelection);
+                    computerSelectionScore++;
+                    alert("Computer wins! " + computerSelection + " beats " + playerSelection);
                 }
               }else {
                 return "Incorrect entry!, Please try again...";
@@ -37,17 +40,22 @@ function playRound(playerSelection, computerSelection) {
     }
 } 
 
-const playerSelection = "rock";
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
+
+// console.log(playRound(playerSelection, computerSelection));
 
 function game() {
-    let playerSelectionScore = 0;
-    let computerSelectionScore = 0;
+    // const computerSelection = computerPlay();
+    let gameBegin = confirm("Let's play Rock, Paper or Scissors")
 
     for (let i = 0; i < 5; i++) {
+        const playerSelection = "rock";
+        const computerSelection = computerPlay();
         playRound(playerSelection, computerSelection);
-
-        // if ()
+    }
+    if (playerSelectionScore > computerSelectionScore) {
+        console.log(`You win ${playerSelectionScore} times`)
+    } else {
+        console.log(`Computer wins ${computerSelectionScore} times`)
     }
 }
+game();
