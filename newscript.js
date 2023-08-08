@@ -5,8 +5,9 @@ function computerPlay() {
     return options[Math.floor(Math.random() * options.length)];
 }
 
+let gameBegin = confirm("Let's play Rock, Paper or Scissors")
+
 function playRound(playerSelection, computerSelection) {
-    let gameBegin = confirm("Let's play Rock, Paper or Scissors")
     
     if (gameBegin) {
         playerSelection = prompt("Please enter rock, paper or scissors!");
@@ -41,16 +42,12 @@ function playRound(playerSelection, computerSelection) {
 } 
 
 
-// console.log(playRound(playerSelection, computerSelection));
-
 function game() {
-    // const computerSelection = computerPlay();
-    let gameBegin = confirm("Let's play Rock, Paper or Scissors")
 
+    const playerSelection = "rock";
+    const computerSelection = computerPlay();
     for (let i = 0; i < 5; i++) {
-        const playerSelection = "rock";
-        const computerSelection = computerPlay();
-        playRound(playerSelection, computerSelection);
+         playRound(playerSelection, computerSelection);
     }
     if (playerSelectionScore > computerSelectionScore) {
         console.log(`You win ${playerSelectionScore} times`)
