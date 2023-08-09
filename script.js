@@ -34,7 +34,7 @@ const playRound = (playerSelection, computerSelection) => {
 };
 
 const game = () => {
-  const shouldPlay = confirm("Do you want to play Rock, Paper, Scissors?");
+  const shouldPlay = confirm("Do you want to play ✊,✋ or✌?");
 
   if (!shouldPlay) {
     console.log("Maybe next time!");
@@ -72,12 +72,15 @@ const game = () => {
   }
 
   if (playerSelectionScore > computerSelectionScore) {
-    console.log(`You won ${playerSelectionScore} times`);
+    console.log(
+      `Conratulations. 🎈🎈🎈 You won ${playerSelectionScore} rounds`
+    );
   } else if (playerSelectionScore === computerSelectionScore) {
     console.log("The game ended in a draw.");
   } else {
-    console.log(`Computer won ${computerSelectionScore} times`);
+    console.log(
+      `Congratulations.🎈🎈🎈 Computer won ${computerSelectionScore} rounds`
+    );
   }
 };
-
 game();
