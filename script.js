@@ -9,6 +9,7 @@ const computerPlay = () => {
 const playRound = (playerSelection, computerSelection) => {
   if (playerSelection) {
     playerSelection = playerSelection.trim().toLowerCase();
+    
     if (options.includes(playerSelection)) {
       if (playerSelection === computerSelection) {
         return "It's a draw! Both played " + playerSelection;
