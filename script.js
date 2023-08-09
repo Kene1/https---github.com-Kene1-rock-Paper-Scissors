@@ -62,10 +62,6 @@ const game = () => {
       }
     }
 
-    if (playerSelection === null) {
-      break;
-    }
-
     const computerSelection = computerPlay();
     console.log(`Round ${i + 1}:`);
     console.log(playRound(playerSelection, computerSelection));
@@ -73,7 +69,7 @@ const game = () => {
 
   if (playerSelectionScore > computerSelectionScore) {
     console.log(
-      `Conratulations. 🎈🎈🎈 You won ${playerSelectionScore} rounds`
+      `Congratulations. 🎈🎈🎈 You won ${playerSelectionScore} rounds`
     );
   } else if (playerSelectionScore === computerSelectionScore) {
     console.log("The game ended in a draw.");
