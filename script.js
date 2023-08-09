@@ -1,51 +1,83 @@
 let options = ["rock", "paper", "scissors"];
+let playerSelectionScore = 0;
+let computerSelectionScore = 0;
 
 const computerPlay = () => {
   return options[Math.floor(Math.random() * options.length)];
 };
 
 const playRound = (playerSelection, computerSelection) => {
-  let gameBegin = confirm("let's play Rock, Paper, Scissors!");
-  if (gameBegin) {
-    playerSelection = prompt("please enter rock, paper or scissors!");
-
-    if (playerSelection) {
-      playerSelection = playerSelection.trim().toLowerCase();
-      if (
-        playerSelection === "rock" ||
-        playerSelection === "paper" ||
-        playerSelection === "scissors"
+  if (playerSelection) {
+    playerSelection = playerSelection.trim().toLowerCase();
+    if (options.includes(playerSelection)) {
+      if (playerSelection === computerSelection) {
+        return "It's a draw! Both played " + playerSelection;
+      } else if (
+        (playerSelection === "paper" && computerSelection === "rock") ||
+        (playerSelection === "scissors" && computerSelection === "paper") ||
+        (playerSelection === "rock" && computerSelection === "scissors")
       ) {
-        let result =
-          playerSelection === computerSelection
-            ? `You played: ${playerSelection}, computer played: ${computerSelection}. It's a draw!`
-            : playerSelection === "paper" && computerSelection === "rock"
-            ? `You played: ${playerSelection}, computer played: ${computerSelection}. You win! Paper beats Rock.`
-            : playerSelection === "scissors" && computerSelection === "paper"
-            ? `You played: ${playerSelection}, computer played: ${computerSelection}. You win! Scissors beats Paper.`
-            : playerSelection === "rock" && computerSelection === "scissors"
-            ? `You played: ${playerSelection}, computer played: ${computerSelection}. You win! Rock beats Scissors!`
-            : "You Lose!"; // we need more logic here for when computer wins
-        return result;
+        playerSelectionScore++;
+        return "You win! " + playerSelection + " beats " + computerSelection;
       } else {
-        return "Incorrect entry!, Please try again...";
+        computerSelectionScore++;
+        return (
+          "Computer wins! " + computerSelection + " beats " + playerSelection
+        );
       }
     } else {
-      return "See you soon!";
+      return "Incorrect entry! Please try again...";
     }
   } else {
-    return "Goodbye!";
+    return "See you soon!";
   }
 };
 
-const playerSelection = "rock";
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection)); //used console to
-// test, we will use return later as per the instructions
-
-// Next we have to create a game() function.... and add a loop
 const game = () => {
+  const shouldPlay = confirm("Do you want to play Rock, Paper, Scissors?");
+
+  if (!shouldPlay) {
+    console.log("Maybe next time!");
+    return;
+  }
+
   for (let i = 0; i < 5; i++) {
-    //
+    let playerSelection = prompt(
+      `Round ${i + 1}: Enter rock, paper, or scissors! (Press Cancel to stop)`
+    );
+
+    if (playerSelection === null) {
+      console.log("Game stopped.");
+      break;
+    }
+
+    while (!options.includes(playerSelection.trim().toLowerCase())) {
+      console.log("Invalid choice. Please try again...");
+      playerSelection = prompt(
+        `Round ${i + 1}: Enter rock, paper, or scissors! (Press Cancel to stop)`
+      );
+      if (playerSelection === null) {
+        console.log("Game stopped.");
+        break;
+      }
+    }
+
+    if (playerSelection === null) {
+      break;
+    }
+
+    const computerSelection = computerPlay();
+    console.log(`Round ${i + 1}:`);
+    console.log(playRound(playerSelection, computerSelection));
+  }
+
+  if (playerSelectionScore > computerSelectionScore) {
+    console.log(`You won ${playerSelectionScore} times`);
+  } else if (playerSelectionScore === computerSelectionScore) {
+    console.log("The game ended in a draw.");
+  } else {
+    console.log(`Computer won ${computerSelectionScore} times`);
   }
 };
+
+game();

@@ -11,7 +11,7 @@ function playRound(playerSelection, computerSelection) {
     
     if (gameBegin) {
         playerSelection = prompt("Please enter rock, paper or scissors!");
-
+        
         if (playerSelection) {
             playerSelection = playerSelection.trim().toLowerCase();
 
@@ -31,15 +31,21 @@ function playRound(playerSelection, computerSelection) {
                     alert("Computer wins! " + computerSelection + " beats " + playerSelection);
                 }
               }else {
-                return "Incorrect entry!, Please try again...";
+                alert("Incorrect entry!, Please try again...");
               }
         }else {
-            return "See You Soon!"
+            alert("See You Soon!");
         }
     }else {
         return "Goodbye!"
+        // alert("You cancelled the game");
+        // return;
     }
 } 
+
+// const playerSelection = "rock";
+//     const computerSelection = computerPlay();
+//     console.log(playRound(playerSelection, computerSelection));
 
 
 function game() {
@@ -47,7 +53,7 @@ function game() {
     const playerSelection = "rock";
     const computerSelection = computerPlay();
     for (let i = 0; i < 5; i++) {
-         playRound(playerSelection, computerSelection);
+        playRound(playerSelection, computerSelection);
     }
     if (playerSelectionScore > computerSelectionScore) {
         console.log(`You win ${playerSelectionScore} times`)
