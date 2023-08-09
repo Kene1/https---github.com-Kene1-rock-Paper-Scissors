@@ -26,10 +26,27 @@ const playRound = (playerSelection, computerSelection) => {
         );
       }
     } else {
-      return "Incorrect entry! Please try again...";
+      return "Incorrect choice! Please try again...";
     }
   } else {
     return "See you soon!";
+  }
+};
+
+const selectWinner = () => {
+  if (playerSelectionScore > computerSelectionScore) {
+    console.log(
+      `Congratulations. 🎈🎈🎈 You won ${playerSelectionScore} rounds`
+    );
+  } else if (
+    playerSelectionScore === computerSelectionScore &&
+    playerSelectionScore != 0
+  ) {
+    console.log("The game ended in a draw.");
+  } else if (computerSelectionScore) {
+    console.log(
+      `Congratulations.🎈🎈🎈 Computer won ${computerSelectionScore} rounds`
+    );
   }
 };
 
@@ -51,32 +68,17 @@ const game = () => {
       break;
     }
 
-    while (!options.includes(playerSelection.trim().toLowerCase())) {
+    while (!options.includes(playerSelection)) {
       console.log("Invalid choice. Please try again...");
       playerSelection = prompt(
         `Round ${i + 1}: Enter rock, paper, or scissors! (Press Cancel to stop)`
       );
-      if (playerSelection === null) {
-        console.log("Game stopped.");
-        break;
-      }
     }
 
     const computerSelection = computerPlay();
     console.log(`Round ${i + 1}:`);
     console.log(playRound(playerSelection, computerSelection));
   }
-
-  if (playerSelectionScore > computerSelectionScore) {
-    console.log(
-      `Congratulations. 🎈🎈🎈 You won ${playerSelectionScore} rounds`
-    );
-  } else if (playerSelectionScore === computerSelectionScore) {
-    console.log("The game ended in a draw.");
-  } else {
-    console.log(
-      `Congratulations.🎈🎈🎈 Computer won ${computerSelectionScore} rounds`
-    );
-  }
+  selectWinner();
 };
 game();
